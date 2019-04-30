@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Material+Icons');
+@import 'variables';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: 'Open Sans Condensed', 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+/* angular material */
+.mat-drawer-container {
+  background-image: url('assets/images/background.jpg');
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}

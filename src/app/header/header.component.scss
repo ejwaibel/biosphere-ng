@@ -1,0 +1,32 @@
+@import 'variables';
+
+.population-count {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: map-get($colors, dusty-grey);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // font-family: $font-family-sans-serif;
+  margin: 0;
+  padding: 2px 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+
+  .title {
+    border-bottom: 1px map-get($colors, dusty-grey) solid;
+    flex: 0 0 100%;
+  }
+
+  .male {
+    color: map-get($colors, fountain);
+    flex: 0 0 50%;
+  }
+
+  .female {
+    color: map-get($colors, hopbush);
+    flex: 0 0 50%;
+  }
+}
