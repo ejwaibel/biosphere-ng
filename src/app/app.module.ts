@@ -7,6 +7,7 @@ import {
   MatGridListModule,
   MatListModule,
   MatSidenavModule,
+  MatTooltipModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     MatListModule,
     MatSidenavModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

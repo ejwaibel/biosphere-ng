@@ -1,3 +1,13 @@
-<a href="#" class="action" data-action="${action.type}" title="${action.title}">
-  <i class="icon glyphicon glyphicon-${action.icon}"></i>
-</a>
+<div class="actions-bar">
+  <button
+    mat-fab
+    matTooltip="{{ action.name }}"
+    matTooltipPosition="above"
+    *ngFor="let action of _actions"
+    (click)="(action.onClick)"
+    color="primary"
+    class="action"
+  >
+    <mat-icon>{{ action.icon }}</mat-icon>
+  </button>
+</div>

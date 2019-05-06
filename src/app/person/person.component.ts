@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BiosphereService } from '../biosphere.service';
 
 @Component({
   selector: 'app-person',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonComponent implements OnInit {
   private isShowDetails: Boolean = false;
-  
-  constructor() { }
+
+  constructor(private _biosphere: BiosphereService) { }
 
   ngOnInit() {
   }

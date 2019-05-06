@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BiosphereService } from '../biosphere.service';
+import { EGender } from '../person/IPerson';
 
 @Component({
   selector: 'app-header',
@@ -6,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private population: object = {
+  public population: Object = {
+    [EGender.MALE]: 0,
+    [EGender.FEMALE]: 0,
     total: 0,
-    male: 0,
-    female: 0,
   };
-  
-  constructor() { }
+
+  constructor(private _biosphereService: BiosphereService) {
+    this._biosphereService.personsSubject.subscribe(p => {
+      this.population['total']++;
+      console.log(p.gender);
+
+      this.population[p.gender]++;
+    });
+  }
 
   ngOnInit() {
   }
-
 }
