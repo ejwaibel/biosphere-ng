@@ -7,7 +7,7 @@ import { BiosphereService } from '../biosphere.service';
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-  private isShowDetails: Boolean = false;
+  private isShowDetails: boolean = false;
 
   constructor(private _biosphere: BiosphereService) { }
 

@@ -1,35 +1,36 @@
-import { EClothing, EGender, IPerson, IPersonAttributes } from './IPerson';
+import { clothing, gender, PersonActions, PersonAttributes } from './person.interface';
 import utils from '../utils';
 
-export class Person implements IPerson {
-  public age: number;
-  public clothing: EClothing;
-  public dirtFactor: number;
-  public gender: EGender;
-  public isAlive: boolean;
-  public isMute: boolean;
-  public sleepFactor: number;
-  public static thoughts: string;
-  public weight: number;
+export class Person implements PersonActions, PersonAttributes {
+  static thoughts: string;
+
+  age: number;
+  clothing: string;
+  dirtFactor: number;
+  isAlive: boolean;
+  isMute: boolean;
+  sex: string;
+  sleepFactor: number;
+  weight: number;
 
   private _id: string;
   private _maxAge: number;
   private _maxWeight: number;
   private name: string;
 
-  constructor(name?: string, gender?: EGender) {
+  constructor(name?: string, sex?: string) {
     this._id = utils.getUuid();
     this.isAlive = true;
     this.age = 0;
     this._maxAge = 70 + utils.getRandomNumber(15) + utils.getRandomNumber(15);
 
     // Set properties based on arguments to constructor
-    this.gender = gender || EGender.MALE;
-    this.name = name || (this.gender === EGender.MALE ? 'John Doe' : 'Jane Doe');
+    this.sex = sex || gender.MALE;
+    this.name = name || (this.sex === gender.MALE ? 'John Doe' : 'Jane Doe');
 
     // Set default values for instance of Person
     this.age = 1;
-    this.clothing = EClothing.NAKED;
+    this.clothing = clothing.NAKED;
     this.dirtFactor = 0;
     this.isMute = utils.getRandomNumber(2) < 2 ? false : true;
     this.sleepFactor = 10;

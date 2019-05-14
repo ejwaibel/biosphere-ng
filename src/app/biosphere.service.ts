@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BiosphereService {
-  private _persons: Object[];
-  public personsSubject = new Subject<any>();
+  persons$: Observable<object>[];
 
-  constructor() {
-    this._persons = [];
+  constructor(private store: Store<{ people: Array<object>}>) {
+    this.persons$ = select('persons');
   }
 
-  addPerson(p: Object) {
-    this._persons.push(p);
-    this.personsSubject.next(p)
+  addPerson(p: object) {
+    // this._persons.push(p);
   }
 
   getPerson(id?: string) {
@@ -22,6 +21,6 @@ export class BiosphereService {
       return [];
     }
 
-    return this.personsSubject.asObservable();
+    return this.persons$;
   }
 }

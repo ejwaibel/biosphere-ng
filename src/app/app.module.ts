@@ -18,6 +18,10 @@ import { ActionsBarComponent } from './actions-bar/actions-bar.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { BiosphereComponent } from './biosphere/biosphere.component';
 import { HeaderComponent } from './header/header.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/app.effects';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,8 @@ import { HeaderComponent } from './header/header.component';
     MatListModule,
     MatSidenavModule,
     MatTooltipModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
