@@ -1,4 +1,4 @@
-<p>
-  biosphere works!
-</p>
+<div *ngFor="let person of persons$ | async">
+  <app-person [person]="person"></app-person>
+</div>
 <app-actions-bar></app-actions-bar>

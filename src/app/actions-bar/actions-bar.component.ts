@@ -4,7 +4,7 @@ interface ActionType {
   action: string,
   icon: string,
   name: string,
-  onClick: Function,
+  onClick?: () => {},
 };
 
 @Component({
@@ -13,56 +13,56 @@ interface ActionType {
   styleUrls: ['./actions-bar.component.scss']
 })
 export class ActionsBarComponent implements OnInit {
-  private _actions: ActionType[];
+  public actions: ActionType[];
 
   constructor() { }
 
   ngOnInit() {
-    this._actions = [{
+    this.actions = [{
       action: 'eat',
       icon: 'fastfood',
       name: 'Eat',
-      onClick: () => { },
+      // onClick: () => {},
     }, {
       action: 'clothing',
       icon: 'store_mall_directory',
       name: 'Change Clothing',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'exercise',
       icon: 'fitness_center',
       name: 'Exercise',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'age',
       icon: 'timelapse',
       name: 'Increase Age',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'shower',
       icon: 'hot_tub',
       name: 'Shower',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'sleep',
       icon: 'local_hotel',
       name: 'Sleep',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'work',
       icon: 'attach_money',
       name: 'Work',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'mute',
       icon: 'volume_mute',
       name: 'Silence',
-      onClick: () => { },
+      // onClick: () => { },
     }, {
       action: 'kill',
       icon: 'delete',
       name: 'Kill',
-      onClick: () => { },
+      // onClick: () => { },
     }];
   }
 

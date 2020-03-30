@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BiosphereService } from '../biosphere.service';
-import { Person } from '../person/Person';
+import { BiosphereService } from '../biosphere/biosphere.service';
+import { Person } from '../core/model/person.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +8,12 @@ import { Person } from '../person/Person';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-  constructor(private _biosphereService: BiosphereService) {}
+  constructor(private biosphereService: BiosphereService) {}
 
   ngOnInit() {}
 
   addPerson() {
     const p = new Person();
-    console.log('addPerson | ', p);
-    this._biosphereService.addPerson(p);
+    this.biosphereService.addPerson(p);
   }
 }

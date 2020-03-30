@@ -3,8 +3,8 @@
     mat-fab
     matTooltip="{{ action.name }}"
     matTooltipPosition="above"
-    *ngFor="let action of _actions"
-    (click)="(action.onClick)"
+    *ngFor="let action of actions"
+    (click)="action.onClick()"
     color="primary"
     class="action"
   >

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BiosphereService } from '../biosphere.service';
+import { BiosphereService } from '../biosphere/biosphere.service';
 import { gender } from '../person/person.interface';
+import { Person } from '../core/model/person.model';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +10,13 @@ import { gender } from '../person/person.interface';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public population: object = {
+  public population = {
     [gender.MALE]: 0,
     [gender.FEMALE]: 0,
     total: 0,
   };
 
-  private _persons$: Observable<object>[];
+  public persons$: Observable<Person[]>;
 
   constructor(private biosphereService: BiosphereService) {
     // this.biosphereService.personsSubject.subscribe(p => {
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
     //   this.population[p.gender]++;
     // });
-    this._persons$ = this.biosphereService.getPerson();
+    this.persons$ = this.biosphereService.persons$;
   }
 
   ngOnInit() {

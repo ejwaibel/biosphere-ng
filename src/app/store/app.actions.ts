@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-  AddPerson = '[Person] Load Persons',
-  RRRRemovePerson = '[Person] Load Persons',
+  AddPerson = '[Person] Add Person',
+  RemovePerson = '[Person] Remove Person',
 }
 
 export class AddPerson implements Action {

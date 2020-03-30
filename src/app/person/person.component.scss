@@ -1,0 +1,146 @@
+@import "variables";
+
+/**
+ * Person styles
+ */
+ .person {
+	height: 160px;
+	position: absolute;
+	width: 60px;
+	z-index: 100;
+
+	/* SHADOW */
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -2;
+	}
+
+	&:not(.tombstone) {
+		&::after {
+			display: none;
+		}
+
+		&::before {
+			bottom: -150px;
+			height: 160px;
+			left: 5px;
+			transform: skew(131deg);
+			transform-origin: 0 0;
+			width: 60px;
+			z-index: 5;
+		}
+	}
+
+	&.tombstone {
+		background: url("/assets/images/tombstone.png") no-repeat;
+		display: none;
+		width: 100px;
+
+		.person-name {
+			color: #ffffff;
+			font-family: "Papyrus";
+			font-size: 70%;
+			left: 33%;
+			top: 65%;
+			width: 25px;
+		}
+
+		.death-age {
+			display: block;
+		}
+
+		.heart,
+		.silence {
+			display: none;
+		}
+	}
+
+	&.male {
+		background: url("/assets/images/male.png") no-repeat;
+
+		&::before {
+			background: url("/assets/images/male-shadow.png") no-repeat;
+		}
+
+		.heart {
+			top: 70px;
+		}
+
+		.silence {
+			top: 2.65em;
+		}
+	}
+
+	&.female {
+		background: url("/assets/images/female.png") no-repeat;
+
+		&:before {
+			background: url("/assets/images/female-shadow.png") no-repeat;
+		}
+
+		.heart {
+			top: 40px;
+		}
+
+		.silence {
+			top: .75em;
+		}
+	}
+
+	&.selected {
+		background-color: #b20326;
+		border-radius: 30px;
+	 }
+
+	 .icon {
+	 	position: absolute;
+	 }
+
+	.person-name {
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 4px;
+		bottom: 100%;
+		color: #ffffff;
+		// font-family: $font-family-sans-serif;
+		font-size: 14px;
+		font-style: bold;
+		left: 15%;
+		position: absolute;
+		text-transform: uppercase;
+		z-index: 10;
+	}
+
+	.death-age {
+		color: #8AF81A;
+		display: none;
+		position: absolute;
+		right: 25px;
+		text-shadow: #000 2px -1px 2px;
+		top: 125px;
+	}
+
+	.heart {
+		color: map-get($colors, 'red');
+		font-size: 13px;
+		left: 5px;
+		position: relative;
+	}
+
+	.silence {
+		display: none;
+		font-size: 1em;
+		left: calc(50% - .5em);
+	}
+
+	&.mute {
+		.silence {
+			display: inline-block;
+		}
+	}
+
+	.speech-bubble {
+		display: none;
+	}
+}

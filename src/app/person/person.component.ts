@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BiosphereService } from '../biosphere.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { BiosphereService } from '../biosphere/biosphere.service';
+import { Person } from '../core/model/person.model';
 
 @Component({
   selector: 'app-person',
@@ -7,7 +8,8 @@ import { BiosphereService } from '../biosphere.service';
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-  private isShowDetails: boolean = false;
+  @Input() person: Person;
+  public isShowDetails = false;
 
   constructor(private _biosphere: BiosphereService) { }
 
