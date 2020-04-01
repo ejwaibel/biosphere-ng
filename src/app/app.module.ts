@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
@@ -13,7 +14,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PersonComponent } from './person/person.component';
 import { ActionsBarComponent } from './actions-bar/actions-bar.component';
-import { PersonDetailsComponent } from './person-details/person-details.component';
+import { PersonDetailsComponent } from './person/person-details/person-details.component';
 import { BiosphereComponent } from './biosphere/biosphere.component';
 import { HeaderComponent } from './header/header.component';
 import { CoreModule } from './core/core.module';
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    DragDropModule,
     MatButtonModule,
     MatGridListModule,
     MatIconModule,

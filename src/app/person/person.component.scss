@@ -6,6 +6,7 @@
  .person {
 	height: 160px;
 	position: absolute;
+  user-select: none;
 	width: 60px;
 	z-index: 100;
 

@@ -18,11 +18,7 @@ export class BiosphereService {
     this.personService.add(p);
   }
 
-  getPerson(id?: string) {
-    if (id) {
-      return [];
-    }
-
-    return this.persons$;
+  selectPerson(id: number | string) {
+    return this.personService.selectors.selectEntities;
   }
 }

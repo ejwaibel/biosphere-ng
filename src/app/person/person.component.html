@@ -1,4 +1,4 @@
-<div class="person {{person.gender}}" [attr.data-uuid]="person.id" [class.mute]="person.isMute">
+<div class="person {{person.gender}}" [attr.data-uuid]="person.id" [class.mute]="person.isMute" cdkDragBoundary="biosphere" cdkDrag>
   <mat-icon>heart</mat-icon>
   <mat-icon>silence</mat-icon>
   <!-- <i class="icon glyphicon glyphicon-heart heart js-heart"></i> -->

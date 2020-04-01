@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { BiosphereService } from '../biosphere/biosphere.service';
 import { gender } from '../person/person.interface';
 import { Person } from '../core/model/person.model';
+import { PersonService } from '../person/person.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ import { Person } from '../core/model/person.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public population = {
+  public population: any = {
     [gender.MALE]: 0,
     [gender.FEMALE]: 0,
     total: 0,
@@ -18,14 +20,13 @@ export class HeaderComponent implements OnInit {
 
   public persons$: Observable<Person[]>;
 
-  constructor(private biosphereService: BiosphereService) {
-    // this.biosphereService.personsSubject.subscribe(p => {
-    //   this.population.total++;
-    //   console.log(p.gender);
-
-    //   this.population[p.gender]++;
-    // });
+  constructor(
+    private biosphereService: BiosphereService,
+    private personService: PersonService,
+    private store: Store,
+  ) {
     this.persons$ = this.biosphereService.persons$;
+    this.population.total = this.store.select(this.personService.selectors.selectCount);
   }
 
   ngOnInit() {
