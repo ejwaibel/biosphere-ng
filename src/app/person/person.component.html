@@ -2,8 +2,12 @@
 	class="person {{person.gender}}"
 	[attr.data-uuid]="person.id"
 	[class.mute]="person.isMute"
+  [class.selected]="isSelected$ | async"
 	cdkDrag
 	cdkDragBoundary="biosphere"
+  (cdkDragStarted)="onDragStart($event)"
+  (cdkDragEnded)="onDragEnd()"
+  (click)="onClick()"
 >
 	<mat-icon>heart</mat-icon>
 	<mat-icon>silence</mat-icon>
@@ -17,5 +21,3 @@
 		<p>This is a test</p>
 	</blockquote>
 </div>
-
-<app-person-details [person]="person" *ngIf="isShowDetails"></app-person-details>

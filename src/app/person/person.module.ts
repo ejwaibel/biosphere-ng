@@ -7,11 +7,9 @@ import { ActionsBarComponent } from '../person/actions-bar/actions-bar.component
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [ActionsBarComponent, PersonComponent, PersonDetailsComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-  ],
-  exports: [PersonComponent],
+	declarations: [ActionsBarComponent, PersonDetailsComponent, PersonComponent],
+	entryComponents: [ActionsBarComponent, PersonDetailsComponent],
+	imports: [CommonModule, SharedModule],
+	exports: [PersonComponent],
 })
-export class PersonModule { }
+export class PersonModule {}

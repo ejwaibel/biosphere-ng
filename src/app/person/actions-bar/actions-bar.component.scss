@@ -1,6 +1,11 @@
 .actions-bar {
-  bottom: 0;
-  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   width: 100%;
+
+  button {
+    margin: 0 .25rem;
+  }
 }
