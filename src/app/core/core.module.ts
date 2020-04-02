@@ -1,4 +1,13 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { BiosphereModule } from '../biosphere/biosphere.module';
+import { SharedModule } from '../shared/shared.module';
 
 export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
 	if (parentModule) {
@@ -8,8 +17,23 @@ export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
 }
 
 @NgModule({
-	imports: [],
-  exports: [],
+  declarations: [
+    HeaderComponent,
+    SidebarComponent,
+  ],
+	imports: [
+    BiosphereModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    CommonModule,
+    SharedModule,
+  ],
+  exports: [
+    BiosphereModule,
+    HeaderComponent,
+    SidebarComponent,
+    SharedModule,
+  ],
 	providers: [],
 })
 export class CoreModule {

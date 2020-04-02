@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+
+import { Store, select } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
-import { BiosphereService } from '../biosphere/biosphere.service';
-import { gender } from '../person/person.interface';
-import { Person } from '../core/model/person.model';
-import { PersonService } from '../person/person.service';
-import { Store } from '@ngrx/store';
+import { tap, map } from 'rxjs/operators';
+
+import { BiosphereService } from '../../biosphere/biosphere.service';
+import { gender } from '../../person/person.interface';
+import { Person } from '../model/person.model';
+import { PersonService } from '../../person/person.service';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +30,11 @@ export class HeaderComponent implements OnInit {
     private store: Store,
   ) {
     this.persons$ = this.biosphereService.persons$;
+
     this.population.total = this.store.select(this.personService.selectors.selectCount);
+    // this.personService.getWithQuery('gender=' + gender.MALE).pipe(
+    //   tap((males: Person) => this.population[gender.MALE] = males.length)
+    // );
   }
 
   ngOnInit() {

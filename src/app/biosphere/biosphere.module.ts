@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 
 import { BiosphereComponent } from './biosphere.component';
 
-import { CoreModule } from '../core/core.module';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { PersonModule } from '../person/person.module';
 
@@ -14,7 +12,6 @@ import { PersonModule } from '../person/person.module';
 	],
 	imports: [
     CommonModule,
-		CoreModule,
     SharedModule,
     PersonModule,
 	],
