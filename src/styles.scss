@@ -13,10 +13,14 @@ body {
 
 /* angular material */
 .mat-drawer-container {
-  background-image: url('assets/images/background.jpg');
+  background: #000000 url('assets/images/fall.png') center/cover no-repeat;
   height: 100vh;
   position: relative;
   width: 100vw;
+
+  .mat-drawer-content {
+    overflow: hidden;
+  }
 }
 
 .mat-drawer-inner-container {
