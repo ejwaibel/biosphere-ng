@@ -12,7 +12,7 @@ const apiRoot = environment.apiUrlBase + '/';
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
   root: apiRoot,
   entityHttpResourceUrls: {
-    Person: { entityResourceUrl: apiRoot + 'persons/', collectionResourceUrl: apiRoot + 'customers/' },
+    Person: { entityResourceUrl: apiRoot + 'persons/', collectionResourceUrl: apiRoot + 'persons/' },
   }
 };
 
