@@ -42,11 +42,8 @@ export class PersonService extends EntityCollectionServiceBase<Person> {
   //   return this.isLiving();
   // }
 
-  // get id(): string {
-  //   return this._id;
-  // }
-
-  // eat(): this {
+  eat(p: Person): void {
+    console.log('eat:', p);
   //   if (this._growOld()) {
   //     this.dirtFactor++;
   //     this.sleepFactor++;
@@ -60,9 +57,7 @@ export class PersonService extends EntityCollectionServiceBase<Person> {
   //     this.dirtFactor += 15;
   //     this.weight -= this.weight / 80;
   //   }
-
-  //   return this;
-  // }
+  }
   // isLiving(): boolean {
   //   return this.age < this._maxAge && this.isAlive;
   // }

@@ -1,13 +1,15 @@
 <div class="actions-bar">
-  <button
-    mat-fab
-    matTooltip="{{ action.name }}"
-    matTooltipPosition="above"
-    *ngFor="let action of actions"
-    (click)="action.onClick()"
-    color="primary"
-    class="action"
-  >
-    <mat-icon>{{ action.icon }}</mat-icon>
-  </button>
+  <ng-container *ngIf="selectedPerson$ | async as person">
+    <button
+      mat-fab
+      matTooltip="{{ action.name }}"
+      matTooltipPosition="above"
+      *ngFor="let action of actions"
+      (click)="action.onClick(person)"
+      color="primary"
+      class="action"
+    >
+      <mat-icon>{{ action.icon }}</mat-icon>
+    </button>
+  </ng-container>
 </div>

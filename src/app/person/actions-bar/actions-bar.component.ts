@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../person.service';
+import { BiosphereService } from 'src/app/biosphere/biosphere.service';
+import { Person } from 'src/app/core/model/person.model';
 
 interface ActionType {
-  action: string,
-  icon: string,
-  name: string,
-  onClick?: () => {},
+  action: string;
+  icon: string;
+  name: string;
+  onClick?(person: Person): void,
 };
 
 @Component({
@@ -14,15 +17,16 @@ interface ActionType {
 })
 export class ActionsBarComponent implements OnInit {
   public actions: ActionType[];
+  public selectedPerson$ = this.bioService.selectedPerson$;
 
-  constructor() { }
+  constructor(private bioService: BiosphereService, private personService: PersonService) { }
 
   ngOnInit() {
     this.actions = [{
       action: 'eat',
       icon: 'fastfood',
       name: 'Eat',
-      // onClick: () => {},
+      onClick: this.personService.eat,
     }, {
       action: 'clothing',
       icon: 'store_mall_directory',
