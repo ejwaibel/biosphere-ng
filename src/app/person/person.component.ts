@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { BiosphereService } from '../biosphere/biosphere.service';
 import { Person } from '../core/model/person.model';
 import utils from '../utils';
@@ -11,14 +11,20 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 	selector: 'app-person',
 	templateUrl: './person.component.html',
 	styleUrls: ['./person.component.scss'],
+  providers: [{ provide: Window, useValue: window }],
 })
 export class PersonComponent implements OnInit {
-	private _maxAge: number;
 	private isDragging = false;
   private openDialog: MatDialogRef<PersonDetailsComponent>;
+  private maxAge: number;
+  private maxWeight: number;
 
 	@Input() person: Person;
 
+  public position = {
+    left: 0,
+    top: 0,
+  }
 	public isShowDetails = false;
 	public isSelected$ = this.bioService.selectedPerson$.pipe(
 		map((p: Person) => p?.id === this.person.id),
@@ -31,13 +37,16 @@ export class PersonComponent implements OnInit {
     })
 	);
 
-	constructor(private bioService: BiosphereService, private dialog: MatDialog) {
-		this._maxAge = 70 + utils.getRandomNumber(15) + utils.getRandomNumber(15);
-
+	constructor(private bioService: BiosphereService, private dialog: MatDialog, @Inject(Window) private window: Window) {
+    this.maxAge = 70 + utils.getRandomNumber(15) + utils.getRandomNumber(15);
+    this.maxWeight = 400 + utils.getRandomNumber(150);
     // this.openDialog.afterClosed();
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+    this.position.left = utils.getRandomNumber(this.window.innerWidth);
+    this.position.top = utils.getRandomNumber(this.window.innerHeight - 100);
+  }
 
 	onClick() {
 		if (!this.isDragging) {
@@ -45,7 +54,7 @@ export class PersonComponent implements OnInit {
 		}
 	}
 
-	onDragEnd() {
+	onDragReleased() {
 		this.isDragging = false;
 	}
 

@@ -1,18 +1,22 @@
 <div
 	class="person {{person.gender}}"
+	cdkDrag
+	cdkDragBoundary="biosphere"
 	[attr.data-uuid]="person.id"
 	[class.mute]="person.isMute"
   [class.selected]="isSelected$ | async"
-	cdkDrag
-	cdkDragBoundary="biosphere"
+  [style.left.px]="position.left"
+  [style.top.px]="position.top"
   (cdkDragStarted)="onDragStart($event)"
-  (cdkDragEnded)="onDragEnd()"
+  (cdkDragReleased)="onDragReleased()"
   (click)="onClick()"
 >
-	<mat-icon>heart</mat-icon>
-	<mat-icon>silence</mat-icon>
-	<!-- <i class="icon glyphicon glyphicon-heart heart js-heart"></i> -->
-	<!-- <i class="icon glyphicon glyphicon-remove silence"></i> -->
+  <span class="icon heart">
+    <mat-icon [inline]="true" >favorite</mat-icon>
+  </span>
+  <span class="icon silence">
+    <mat-icon [inline]="true">mic_off</mat-icon>
+  </span>
 	<span class="person-name">{{person.name}}</span>
 	<div class="death-age">
 		<label>Age:<span>{{person.age}}</span></label>
