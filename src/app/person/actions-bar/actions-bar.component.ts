@@ -26,7 +26,7 @@ export class ActionsBarComponent implements OnInit {
       action: 'eat',
       icon: 'fastfood',
       name: 'Eat',
-      onClick: this.personService.eat,
+      onClick: this.personService.eat.bind(this.personService),
     }, {
       action: 'clothing',
       icon: 'store_mall_directory',

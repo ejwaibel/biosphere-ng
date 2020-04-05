@@ -18,11 +18,14 @@ const initialState: BiosphereState = {
 export class BiosphereService {
   private state: BehaviorSubject<BiosphereState> = new BehaviorSubject(initialState);
 
-  public persons$: Observable<Person[]>;
-  public selectedPerson$ = this.state.pipe(pluck('selectedPerson'));
+  constructor(private personService: PersonService) {}
 
-  constructor(private personService: PersonService) {
-    this.persons$ = personService.entities$;
+  public get persons$(): Observable<Person[]> {
+    return this.personService.entities$;
+  }
+
+  public get selectedPerson$(): Observable<Person> {
+    return this.state.pipe(pluck('selectedPerson'));
   }
 
   addPerson(p: Person) {

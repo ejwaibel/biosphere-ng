@@ -1,4 +1,6 @@
-<div
+<a
+  href="#"
+  [title]="person.name"
 	class="person {{person.gender}}"
 	cdkDrag
 	cdkDragBoundary="biosphere"
@@ -9,7 +11,7 @@
   [style.top.px]="position.top"
   (cdkDragStarted)="onDragStart($event)"
   (cdkDragReleased)="onDragReleased()"
-  (click)="onClick()"
+  (click)="onClick($event)"
 >
   <span class="icon heart">
     <mat-icon [inline]="true" >favorite</mat-icon>
@@ -24,4 +26,4 @@
 	<blockquote class="speech-bubble">
 		<p>This is a test</p>
 	</blockquote>
-</div>
+</a>

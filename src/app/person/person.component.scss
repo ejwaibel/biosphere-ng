@@ -4,7 +4,7 @@
  * Person styles
  */
 .person {
-  cursor: pointer;
+  display: block;
 	height: 160px;
 	position: absolute;
   user-select: none;
@@ -15,6 +15,7 @@
 	&::before,
 	&::after {
 		content: '';
+    pointer-events: none;
 		position: absolute;
 		z-index: -2;
 	}

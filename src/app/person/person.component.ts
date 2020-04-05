@@ -30,6 +30,7 @@ export class PersonComponent implements OnInit {
 		map((p: Person) => p?.id === this.person.id),
     tap((selected: boolean) => {
       if (selected) {
+        this.dialog.closeAll();
         this.openDialog = this.dialog.open(PersonDetailsComponent, {
           data: this.person,
         });
@@ -48,7 +49,8 @@ export class PersonComponent implements OnInit {
     this.position.top = utils.getRandomNumber(this.window.innerHeight - 100);
   }
 
-	onClick() {
+	onClick(evt) {
+    evt.preventDefault();
 		if (!this.isDragging) {
 			this.bioService.selectPerson(this.person);
 		}

@@ -19,4 +19,8 @@ export class BiosphereComponent implements OnInit {
   ngOnInit() {
     this.personService.getAll();
   }
+
+  onClick(p: Person) {
+    this.bioService.selectPerson(p);
+  }
 }

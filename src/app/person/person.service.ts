@@ -42,22 +42,27 @@ export class PersonService extends EntityCollectionServiceBase<Person> {
   //   return this.isLiving();
   // }
 
-  eat(p: Person): void {
+  public eat(p: Person): void {
     console.log('eat:', p);
+    const copy = Object.assign({}, p);
+    copy.dirtFactor += 0.2;
+    copy.sleepFactor += 0.5;
+    copy.weight += copy.age * 0.7;
+    console.log({ ...p, ...copy });
+    this.update({ ...p, ...copy });
   //   if (this._growOld()) {
   //     this.dirtFactor++;
   //     this.sleepFactor++;
   //     this.weight += this.age * 0.7;
   //   }
+  }
 
-  //   return this;
-  // }
   // exercise(): this {
   //   if (this._growOld(-0.1)) {
   //     this.dirtFactor += 15;
   //     this.weight -= this.weight / 80;
   //   }
-  }
+  // }
   // isLiving(): boolean {
   //   return this.age < this._maxAge && this.isAlive;
   // }
